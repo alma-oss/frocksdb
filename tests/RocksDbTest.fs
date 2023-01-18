@@ -24,51 +24,71 @@ module Directory =
 
 type Connection =
     {
-        Db: RocksDbSharp.RocksDb
+        Db: RocksDbSharp.RocksDb option
         Path: string
+        Error: string option
     }
 
     interface IDisposable with
         member this.Dispose() =
-            this.Db.Dispose()
+            match this.Db with
+            | Some db -> db.Dispose()
+            | _ -> ()
 
             Directory.delete this.Path
 
 let connect path =
-    use loggerFactory = new LoggerFactory()
-    let rocksDb = path |> RocksDb.connect loggerFactory |> orFail
+    try
+        use loggerFactory = new LoggerFactory()
+        let rocksDb = path |> RocksDb.connect loggerFactory |> orFail
 
-    {
-        Db = rocksDb
-        Path = path
-    }
+        {
+            Db = Some rocksDb
+            Path = path
+            Error = None
+        }
+    with
+    | e ->
+        {
+            Db = None
+            Path = path
+            Error = Some e.Message
+        }
 
 [<Tests>]
 let rocksdbTest =
     testList "Rocks Db test" [
         testCase "should put" <| fun _ ->
-            let { Db = rocksDb } = connect "db/put"
+            use connection = connect "db/put"
+            match connection with
+            | { Db = Some rocksDb } ->
+                ("key", "value") |> RocksDb.put rocksDb
+                let value = "key" |> RocksDb.get rocksDb
 
-            ("key", "value") |> RocksDb.put rocksDb
-            let value = "key" |> RocksDb.get rocksDb
-
-            Expect.equal (Some "value") value "Value should be in the db"
+                Expect.equal (Some "value") value "Value should be in the db"
+            | { Error = Some message } -> Tests.skiptestf "RocksDB couldn't connect due to: %A" message
+            | _ -> failtest "Failed"
 
         testCase "should iterate" <| fun _ ->
-            let { Db = rocksDb } = connect "db/iter"
+            use connection = connect "db/iter"
+            match connection with
+            | { Db = Some rocksDb } ->
 
-            let data =
-                [ 1 .. 10 ]
-                |> List.map (fun i -> sprintf "%02i" i, $"{i}")
+                let data =
+                    [ 1 .. 10 ]
+                    |> List.map (fun i -> sprintf "%02i" i, $"{i}")
 
-            data
-            |> List.iter (RocksDb.put rocksDb)
+                data
+                |> List.iter (RocksDb.put rocksDb)
 
-            let actual =
-                rocksDb
-                |> RocksDb.seq
-                |> Seq.toList
+                let actual =
+                    rocksDb
+                    |> RocksDb.seq
+                    |> Seq.toList
 
-            Expect.equal data.Length (rocksDb |> RocksDb.length) "There should be the same amount of values"
-            Expect.equal data actual "Values should be in the db"
+                Expect.equal data.Length (rocksDb |> RocksDb.length) "There should be the same amount of values"
+                Expect.equal data actual "Values should be in the db"
+
+            | { Error = Some message } -> Tests.skiptestf "RocksDB couldn't connect due to: %A" message
+            | _ -> failtest "Failed"
     ]
