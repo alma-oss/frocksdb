@@ -3,5 +3,5 @@
 <!-- There is always Unreleased section on the top. Subsections (Add, Changed, Fix, Removed) should be Add as needed. -->
 ## Unreleased
 
-## 0.0.0 - 2023-01-17
+## 1.0.0 - 2023-01-18
 - Initial implementation
