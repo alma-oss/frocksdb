@@ -1,11 +1,11 @@
-module Lmc.RocksDb.Test
+module Alma.RocksDb.Test
 
 open Expecto
 
 open System
 open System.IO
 open Microsoft.Extensions.Logging
-open Lmc.RocksDb
+open Alma.RocksDb
 
 let orFail = function
     | Ok ok -> ok
