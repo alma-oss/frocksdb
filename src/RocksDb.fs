@@ -1,4 +1,4 @@
-namespace Lmc.RocksDb
+namespace Alma.RocksDb
 
 [<RequireQualifiedAccess>]
 module RocksDb =
