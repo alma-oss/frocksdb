@@ -39,7 +39,9 @@ type Connection =
 
 let connect path =
     try
+        // fsharplint:disable RedundantNewKeyword
         use loggerFactory = new LoggerFactory()
+        // fsharplint:enable
         let rocksDb = path |> RocksDb.connect loggerFactory |> orFail
 
         {
