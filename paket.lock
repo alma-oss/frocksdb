@@ -221,7 +221,7 @@ NUGET
     Microsoft.IO.Redist (6.0) - restriction: >= net472
       System.Buffers (>= 4.5.1) - restriction: >= net472
       System.Memory (>= 4.5.4) - restriction: >= net472
-    Microsoft.NET.StringTools (17.8.3) - restriction: >= netstandard2.0
+    Microsoft.NET.StringTools (17.9.5) - restriction: >= netstandard2.0
       System.Memory (>= 4.5.5) - restriction: || (>= net472) (&& (< net8.0) (>= netstandard2.0))
       System.Runtime.CompilerServices.Unsafe (>= 6.0) - restriction: || (>= net472) (&& (< net8.0) (>= netstandard2.0))
     Microsoft.NETCore.Platforms (7.0.4) - restriction: || (&& (< monoandroid) (< net45) (< netcoreapp3.1) (>= netstandard2.0) (< win8) (< wpa81) (< xamarinios) (< xamarinmac) (< xamarintvos) (< xamarinwatchos)) (&& (< monoandroid) (< net45) (< netstandard1.2) (>= netstandard2.0) (< win8)) (&& (< monoandroid) (< net45) (< netstandard1.3) (>= netstandard2.0) (< win8) (< wpa81)) (&& (< monoandroid) (< net45) (< netstandard1.5) (>= netstandard2.0) (< win8) (< wpa81)) (&& (< monoandroid) (>= net5.0) (< netcoreapp2.1) (< netstandard2.1) (< xamarintvos) (< xamarinwatchos)) (&& (>= netcoreapp2.0) (< netcoreapp2.1)) (&& (>= netcoreapp2.1) (< netcoreapp3.0))
@@ -233,7 +233,7 @@ NUGET
       System.Security.AccessControl (>= 5.0) - restriction: || (&& (>= monoandroid) (< netstandard1.3)) (&& (< monoandroid) (>= netcoreapp2.0)) (>= monotouch) (&& (< net46) (< netcoreapp2.0) (>= netstandard2.0)) (>= net461) (>= netcoreapp2.1) (>= uap10.1) (>= xamarinios) (>= xamarinmac) (>= xamarintvos) (>= xamarinwatchos)
       System.Security.Principal.Windows (>= 5.0) - restriction: || (&& (>= monoandroid) (< netstandard1.3)) (&& (< monoandroid) (>= netcoreapp2.0)) (>= monotouch) (&& (< net46) (< netcoreapp2.0) (>= netstandard2.0)) (>= net461) (>= netcoreapp2.1) (>= uap10.1) (>= xamarinios) (>= xamarinmac) (>= xamarintvos) (>= xamarinwatchos)
     Mono.Posix.NETStandard (1.0) - restriction: >= netstandard2.0
-    MSBuild.StructuredLogger (2.2.155) - restriction: >= netstandard2.0
+    MSBuild.StructuredLogger (2.2.169) - restriction: >= netstandard2.0
       Microsoft.Build.Framework (>= 17.5) - restriction: >= netstandard2.0
       Microsoft.Build.Utilities.Core (>= 17.5) - restriction: >= netstandard2.0
     Newtonsoft.Json (13.0.3) - restriction: >= netstandard2.0
