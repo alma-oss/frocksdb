@@ -32,7 +32,7 @@ type Connection =
     interface IDisposable with
         member this.Dispose() =
             match this.Db with
-            | Some db -> db.Dispose()
+            | Some db -> (db :> IDisposable).Dispose()
             | _ -> ()
 
             Directory.delete this.Path
@@ -68,8 +68,21 @@ let rocksdbTest =
                 let value = "key" |> RocksDb.get rocksDb
 
                 Expect.equal (Some "value") value "Value should be in the db"
-            | { Error = Some message } -> Tests.skiptestf "RocksDB couldn't connect due to: %A" message
+            | { Error = Some message } -> Tests.failtestf "RocksDB couldn't connect due to: %A" message
             | _ -> failtest "Failed"
+
+        (* testCase "should put and clear" <| fun _ ->
+            use connection = connect "db/put-and-clear"
+            match connection with
+            | { Db = Some rocksDb } ->
+                for i in 1 .. 10 do
+                    ($"key{i}", $"value{i}") |> RocksDb.put rocksDb
+                Expect.equal (rocksDb |> RocksDb.length) 10 "There should be 10 items in the db"
+
+                rocksDb |> RocksDb.clear
+                Expect.equal (rocksDb |> RocksDb.length) 0 "There should be 0 items in the db"
+            | { Error = Some message } -> Tests.failtestf "RocksDB couldn't connect due to: %A" message
+            | _ -> failtest "Failed" *)
 
         testCase "should iterate" <| fun _ ->
             use connection = connect "db/iter"
@@ -91,6 +104,6 @@ let rocksdbTest =
                 Expect.equal data.Length (rocksDb |> RocksDb.length) "There should be the same amount of values"
                 Expect.equal data actual "Values should be in the db"
 
-            | { Error = Some message } -> Tests.skiptestf "RocksDB couldn't connect due to: %A" message
+            | { Error = Some message } -> Tests.failtestf "RocksDB couldn't connect due to: %A" message
             | _ -> failtest "Failed"
     ]
