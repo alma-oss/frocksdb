@@ -16,6 +16,7 @@ jobs:
         env:
           PRIVATE_FEED_USER: ${{ github.repository_owner }}
           PRIVATE_FEED_PASS: ${{ secrets.GITHUB_TOKEN }}
+          DOTNET_ROLL_FORWARD: latestMajor
         run: |
           docker build -t prc-rocksdb --build-arg=PRIVATE_FEED_USER=$PRIVATE_FEED_USER --build-arg=PRIVATE_FEED_PASS=$PRIVATE_FEED_PASS .
           docker container run --rm prc-rocksdb:latest
