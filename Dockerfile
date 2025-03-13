@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/dotnet/sdk:8.0-alpine3.18
+FROM mcr.microsoft.com/dotnet/sdk:9.0-alpine
 
 ARG PRIVATE_FEED_USER
 ARG PRIVATE_FEED_PASS
@@ -13,7 +13,7 @@ ENV PATH="${PATH}:/root/.dotnet/tools"
 ### Install Rocksdb library
 ### see: https://github.com/savsgio/docker-rocksdb/blob/main/Dockerfile
 ###
-ARG ROCKSDB_VERSION=v7.8.3
+ARG ROCKSDB_VERSION=v9.2.1
 ENV ROCKSDB_VERSION=$ROCKSDB_VERSION
 LABEL rocksdb.version=$ROCKSDB_VERSION
 
@@ -51,6 +51,7 @@ RUN apk update \
     PORTABLE=1 make -j4 shared_lib && \
     make install-shared \
     && rm -rf /usr/src/rocksdb
+### / Rocksdb
 
 # build scripts
 COPY ./build.sh /lib/
