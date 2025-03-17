@@ -59,7 +59,7 @@ module internal Targets =
                 |> runParallel
             )
 
-            Target.create "Tests" (fun _ ->
+            Target.create "Tests" <| skipOn "no-tests" (fun _ ->
                 run dotnet "build" safe.SharedTestsPath
                 [
                     "server", dotnet "run" safe.ServerTestsPath
@@ -209,7 +209,7 @@ module internal Targets =
         )
 
         if not definition.Specs.IsSAFEStack then
-            Target.create "Tests" (fun _ ->
+            Target.create "Tests" <| skipOn "no-tests" (fun _ ->
                 if definition.Sources.Tests |> Seq.isEmpty
                 then Trace.tracefn "There are no tests yet."
                 else Dotnet.runOrFail "run" "tests"
