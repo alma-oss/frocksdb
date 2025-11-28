@@ -1,11 +1,5 @@
 FROM mcr.microsoft.com/dotnet/sdk:9.0-alpine
 
-ARG PRIVATE_FEED_USER
-ARG PRIVATE_FEED_PASS
-
-ENV PRIVATE_FEED_USER=${PRIVATE_FEED_USER}
-ENV PRIVATE_FEED_PASS=${PRIVATE_FEED_PASS}
-
 # Setup Dotnet Core tools global path
 ENV PATH="${PATH}:/root/.dotnet/tools"
 
