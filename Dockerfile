@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/dotnet/sdk:9.0-alpine
+FROM mcr.microsoft.com/dotnet/sdk:10.0-alpine
 
 # Setup Dotnet Core tools global path
 ENV PATH="${PATH}:/root/.dotnet/tools"
@@ -7,7 +7,7 @@ ENV PATH="${PATH}:/root/.dotnet/tools"
 ### Install Rocksdb library
 ### see: https://github.com/savsgio/docker-rocksdb/blob/main/Dockerfile
 ###
-ARG ROCKSDB_VERSION=v9.2.1
+ARG ROCKSDB_VERSION=v10.9.1
 ENV ROCKSDB_VERSION=$ROCKSDB_VERSION
 LABEL rocksdb.version=$ROCKSDB_VERSION
 
@@ -40,6 +40,9 @@ RUN apk update \
     cd /usr/src && \
     git clone --depth 1 --branch ${ROCKSDB_VERSION} https://github.com/facebook/rocksdb.git && \
     cd /usr/src/rocksdb && \
+    # Fix missing cstdint includes for newer GCC (add to all headers that need it)
+    find . \( -name "*.h" -o -name "*.cc" \) -exec grep -l "rocksdb_namespace.h" {} \; | \
+      xargs sed -i '/#include "rocksdb\/rocksdb_namespace.h"/a #include <cstdint>' && \
     # Fix 'install -c' flag
     sed -i 's/install -C/install -c/g' Makefile && \
     PORTABLE=1 make -j4 shared_lib && \
@@ -62,6 +65,7 @@ COPY ./tests /lib/tests
 # others
 COPY ./.git /lib/.git
 COPY ./.config /lib/.config
+COPY ./fsharplint.json /lib/
 
 WORKDIR /lib
 
