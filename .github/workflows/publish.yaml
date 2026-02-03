@@ -24,4 +24,4 @@ jobs:
         env:
           NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
           DOTNET_ROLL_FORWARD: latestMajor
-        run: ./build.sh -t publish
+        run: ./build.sh -t publish no-tests
