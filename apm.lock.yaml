@@ -1,0 +1,113 @@
+lockfile_version: '1'
+dependencies: []
+deployments:
+- kind: project-relative
+  target: claude
+  value: .claude/skills/frocksdb
+  runtime: null
+  scope: project
+  owners:
+  - .
+  active_owner: .
+  content_hash: null
+- kind: project-relative
+  target: claude
+  value: .claude/skills/frocksdb/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - .
+  active_owner: .
+  content_hash: sha256:10c023f70e81ea2fd7cd0d5a5f656e0ae7441c714400df31433b3c9cd4c1542b
+- kind: project-relative
+  target: claude
+  value: .claude/skills/frocksdb/references/anti-patterns.md
+  runtime: null
+  scope: project
+  owners:
+  - .
+  active_owner: .
+  content_hash: sha256:b9004cb2a39859fc0be53d4b7ec29e0f1c2b40059056b6b4189551ee261b41ea
+- kind: project-relative
+  target: claude
+  value: .claude/skills/frocksdb/references/examples.md
+  runtime: null
+  scope: project
+  owners:
+  - .
+  active_owner: .
+  content_hash: sha256:51e64a0ace92547ea47108ecf57dad70bf2c811788279a031ea9686e14728170
+- kind: project-relative
+  target: claude
+  value: .claude/skills/frocksdb/references/preferred-patterns.md
+  runtime: null
+  scope: project
+  owners:
+  - .
+  active_owner: .
+  content_hash: sha256:22a9c1b3f1f01e07d8cace66f70dea6f9e287318e2a0c2f18626346a9a0a1691
+- kind: project-relative
+  target: legacy
+  value: .agents/skills/frocksdb
+  runtime: null
+  scope: project
+  owners:
+  - .
+  active_owner: .
+  content_hash: null
+- kind: project-relative
+  target: legacy
+  value: .agents/skills/frocksdb/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - .
+  active_owner: .
+  content_hash: sha256:10c023f70e81ea2fd7cd0d5a5f656e0ae7441c714400df31433b3c9cd4c1542b
+- kind: project-relative
+  target: legacy
+  value: .agents/skills/frocksdb/references/anti-patterns.md
+  runtime: null
+  scope: project
+  owners:
+  - .
+  active_owner: .
+  content_hash: sha256:b9004cb2a39859fc0be53d4b7ec29e0f1c2b40059056b6b4189551ee261b41ea
+- kind: project-relative
+  target: legacy
+  value: .agents/skills/frocksdb/references/examples.md
+  runtime: null
+  scope: project
+  owners:
+  - .
+  active_owner: .
+  content_hash: sha256:51e64a0ace92547ea47108ecf57dad70bf2c811788279a031ea9686e14728170
+- kind: project-relative
+  target: legacy
+  value: .agents/skills/frocksdb/references/preferred-patterns.md
+  runtime: null
+  scope: project
+  owners:
+  - .
+  active_owner: .
+  content_hash: sha256:22a9c1b3f1f01e07d8cace66f70dea6f9e287318e2a0c2f18626346a9a0a1691
+local_deployed_files:
+- .agents/skills/frocksdb
+- .agents/skills/frocksdb/SKILL.md
+- .agents/skills/frocksdb/references/anti-patterns.md
+- .agents/skills/frocksdb/references/examples.md
+- .agents/skills/frocksdb/references/preferred-patterns.md
+- .claude/skills/frocksdb
+- .claude/skills/frocksdb/SKILL.md
+- .claude/skills/frocksdb/references/anti-patterns.md
+- .claude/skills/frocksdb/references/examples.md
+- .claude/skills/frocksdb/references/preferred-patterns.md
+local_deployed_file_hashes:
+  .agents/skills/frocksdb/SKILL.md: sha256:10c023f70e81ea2fd7cd0d5a5f656e0ae7441c714400df31433b3c9cd4c1542b
+  .agents/skills/frocksdb/references/anti-patterns.md: sha256:b9004cb2a39859fc0be53d4b7ec29e0f1c2b40059056b6b4189551ee261b41ea
+  .agents/skills/frocksdb/references/examples.md: sha256:51e64a0ace92547ea47108ecf57dad70bf2c811788279a031ea9686e14728170
+  .agents/skills/frocksdb/references/preferred-patterns.md: sha256:22a9c1b3f1f01e07d8cace66f70dea6f9e287318e2a0c2f18626346a9a0a1691
+  .claude/skills/frocksdb/SKILL.md: sha256:10c023f70e81ea2fd7cd0d5a5f656e0ae7441c714400df31433b3c9cd4c1542b
+  .claude/skills/frocksdb/references/anti-patterns.md: sha256:b9004cb2a39859fc0be53d4b7ec29e0f1c2b40059056b6b4189551ee261b41ea
+  .claude/skills/frocksdb/references/examples.md: sha256:51e64a0ace92547ea47108ecf57dad70bf2c811788279a031ea9686e14728170
+  .claude/skills/frocksdb/references/preferred-patterns.md: sha256:22a9c1b3f1f01e07d8cace66f70dea6f9e287318e2a0c2f18626346a9a0a1691
