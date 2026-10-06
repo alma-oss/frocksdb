@@ -1,5 +1,9 @@
 # AGENTS.md — Alma.RocksDb
 
+## Agent Skills
+
+This repo ships Agent Skill for the `Alma.RocksDb` library. Compatible agents discover it automatically; see `.agents/skills/frocksdb/SKILL.md`.
+
 ## Project Purpose
 
 F# library providing a functional overlay for RocksDB — an embedded persistent key-value store. Wraps the `RocksDbSharp` .NET bindings with F#-idiomatic APIs. Published as NuGet package `Alma.RocksDb`.
